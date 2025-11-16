@@ -1,35 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Layout from './components/layout/Layout';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import Dashboard from './pages/Dashboard';
+import Farms from './pages/Farms';
+import Activities from './pages/Activities';
+import Expenses from './pages/Expenses';
+import Income from './pages/Income';
+import MarketPrices from './pages/MarketPrices';
+import Marketplace from './pages/Marketplace';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function PrivateRoute({ children }) {
+  const { user, loading } = useAuth();
+  
+  if (loading) return <div>Loading...</div>;
+  return user ? children : <Navigate to="/login" />;
 }
 
-export default App
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          
+          <Route path="/dashboard" element={
+            <PrivateRoute>
+              <Layout><Dashboard /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/farms" element={
+            <PrivateRoute>
+              <Layout><Farms /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/activities" element={
+            <PrivateRoute>
+              <Layout><Activities /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/expenses" element={
+            <PrivateRoute>
+              <Layout><Expenses /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/income" element={
+            <PrivateRoute>
+              <Layout><Income /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/prices" element={
+            <PrivateRoute>
+              <Layout><MarketPrices /></Layout>
+            </PrivateRoute>
+          } />
+          
+          <Route path="/marketplace" element={
+            <PrivateRoute>
+              <Layout><Marketplace /></Layout>
+            </PrivateRoute>
+          } />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
