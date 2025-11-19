@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-800 text-white mt-auto">
+    <footer className="bg-gray-800 dark:bg-black text-white mt-auto">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -15,9 +15,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/dashboard" className="text-gray-400 hover:text-white">Dashboard</a></li>
-              <li><a href="/farms" className="text-gray-400 hover:text-white">My Farms</a></li>
-              <li><a href="/marketplace" className="text-gray-400 hover:text-white">Marketplace</a></li>
+              <li><a href="/dashboard" className="text-gray-400 hover:text-white transition-colors">Dashboard</a></li>
+              <li><a href="/farms" className="text-gray-400 hover:text-white transition-colors">My Farms</a></li>
+              <li><a href="/marketplace" className="text-gray-400 hover:text-white transition-colors">Marketplace</a></li>
             </ul>
           </div>
 

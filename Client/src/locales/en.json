@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "farms": "Farms",
+    "activities": "Activities",
+    "expenses": "Expenses",
+    "income": "Income",
+    "prices": "Market Prices",
+    "marketplace": "Marketplace",
+    "logout": "Logout",
+    "welcome": "Welcome"
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Register",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "county": "County",
+    "loginTitle": "Sign in to your account",
+    "registerTitle": "Create your farmer account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  },
+  "dashboard": {
+    "greeting": "Good Morning",
+    "totalFarms": "Total Farms",
+    "activitiesLogged": "Activities Logged",
+    "totalExpenses": "Total Expenses",
+    "totalIncome": "Total Income",
+    "recentActivities": "Recent Activities",
+    "profitSummary": "Profit Summary",
+    "netProfit": "Net Profit"
+  },
+  "farms": {
+    "title": "My Farms",
+    "addNew": "Add New Farm",
+    "description": "Farm Description",
+    "size": "Farm Size",
+    "location": "Location",
+    "soilType": "Soil Type",
+    "irrigation": "Has Irrigation System",
+    "crops": "Crops Grown"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading",
+    "noData": "No data available"
+  }
+}

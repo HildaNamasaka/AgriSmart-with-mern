@@ -324,59 +324,61 @@ export default function Income() {
           </p>
         </Card>
       ) : (
-        <Card>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Crop</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Price/Unit</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Buyer</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {incomes.map((income) => (
-                  <tr key={income._id}>
-                    <td className="px-6 py-4 text-sm text-gray-900">
-                      {formatDate(income.date)}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">{income.crop}</td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
-                      {income.quantity} {income.unit}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
-                      KES {income.pricePerUnit.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-green-600">
-                      KES {income.totalAmount.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">{income.buyer || '-'}</td>
-                    <td className="px-6 py-4 text-sm">
-                      <span className={`px-2 py-1 rounded text-xs ${
-                        income.paymentStatus === 'Paid' ? 'bg-green-100 text-green-800' :
-                        income.paymentStatus === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-blue-100 text-blue-800'
-                      }`}>
-                        {income.paymentStatus}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-sm">
-                      <button
-                        onClick={() => handleDelete(income._id)}
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        Delete
-                      </button>
-                    </td>
+        <Card className="overflow-hidden">
+          <div className="overflow-x-auto -mx-6">
+            <div className="inline-block min-w-full align-middle">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Date</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Crop</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Quantity</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Price/Unit</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Total</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Buyer</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {incomes.map((income) => (
+                    <tr key={income._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                        {formatDate(income.date)}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{income.crop}</td>
+                      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                        {income.quantity} {income.unit}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                        KES {income.pricePerUnit.toLocaleString()}
+                      </td>
+                      <td className="px-6 py-4 text-sm font-semibold text-green-600 whitespace-nowrap">
+                        KES {income.totalAmount.toLocaleString()}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{income.buyer || '-'}</td>
+                      <td className="px-6 py-4 text-sm whitespace-nowrap">
+                        <span className={`px-2 py-1 rounded text-xs ${
+                          income.paymentStatus === 'Paid' ? 'bg-green-100 text-green-800' :
+                          income.paymentStatus === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-blue-100 text-blue-800'
+                        }`}>
+                          {income.paymentStatus}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-sm whitespace-nowrap">
+                        <button
+                          onClick={() => handleDelete(income._id)}
+                          className="text-red-600 hover:text-red-800 font-medium"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </Card>
       )}

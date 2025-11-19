@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "dashboard": "Dashibodi",
+    "farms": "Mashamba",
+    "activities": "Shughuli",
+    "expenses": "Matumizi",
+    "income": "Mapato",
+    "prices": "Bei za Soko",
+    "marketplace": "Soko",
+    "logout": "Toka",
+    "welcome": "Karibu"
+  },
+  "auth": {
+    "login": "Ingia",
+    "register": "Jisajili",
+    "name": "Jina Kamili",
+    "phone": "Nambari ya Simu",
+    "email": "Barua Pepe",
+    "password": "Nywila",
+    "confirmPassword": "Thibitisha Nywila",
+    "county": "Kaunti",
+    "loginTitle": "Ingia kwenye akaunti yako",
+    "registerTitle": "Fungua akaunti ya mkulima",
+    "noAccount": "Huna akaunti?",
+    "haveAccount": "Tayari una akaunti?"
+  },
+  "dashboard": {
+    "greeting": "Habari ya Asubuhi",
+    "totalFarms": "Jumla ya Mashamba",
+    "activitiesLogged": "Shughuli Zilizorekodiwa",
+    "totalExpenses": "Jumla ya Matumizi",
+    "totalIncome": "Jumla ya Mapato",
+    "recentActivities": "Shughuli za Hivi Karibuni",
+    "profitSummary": "Muhtasari wa Faida",
+    "netProfit": "Faida Halisi"
+  },
+  "farms": {
+    "title": "Mashamba Yangu",
+    "addNew": "Ongeza Shamba",
+    "description": "Maelezo ya Shamba",
+    "size": "Ukubwa wa Shamba",
+    "location": "Mahali",
+    "soilType": "Aina ya Udongo",
+    "irrigation": "Ina Mfumo wa Umwagiliaji",
+    "crops": "Mazao Yaliyopandwa"
+  },
+  "common": {
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "edit": "Hariri",
+    "search": "Tafuta",
+    "loading": "Inapakia",
+    "noData": "Hakuna data"
+  }
+}

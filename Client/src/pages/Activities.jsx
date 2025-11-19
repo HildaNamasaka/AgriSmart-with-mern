@@ -98,10 +98,10 @@ export default function Activities() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Farm Activities</h1>
-          <p className="text-gray-600 mt-2">Track your farm operations</p>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Farm Activities</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">Track your farm operations</p>
         </div>
         <Button onClick={() => setShowForm(!showForm)}>
           {showForm ? 'Cancel' : 'Log Activity'}
@@ -119,7 +119,7 @@ export default function Activities() {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Farm <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -127,7 +127,7 @@ export default function Activities() {
                   value={formData.farm}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   <option value="">Select Farm</option>
                   {farms.map((farm) => (
@@ -137,7 +137,7 @@ export default function Activities() {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Activity Type <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -145,7 +145,7 @@ export default function Activities() {
                   value={formData.activityType}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   <option value="">Select Activity</option>
                   {ACTIVITY_TYPES.map((type) => (
@@ -155,7 +155,7 @@ export default function Activities() {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Crop <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -163,7 +163,7 @@ export default function Activities() {
                   value={formData.crop}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   <option value="">Select Crop</option>
                   {CROPS.map((crop) => (
@@ -191,14 +191,14 @@ export default function Activities() {
               />
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Unit
                 </label>
                 <select
                   name="unit"
                   value={formData.unit}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   <option value="kg">Kilograms (kg)</option>
                   <option value="bags">Bags</option>
@@ -237,7 +237,7 @@ export default function Activities() {
             />
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Notes
               </label>
               <textarea
@@ -246,7 +246,7 @@ export default function Activities() {
                 onChange={handleChange}
                 rows="3"
                 placeholder="Additional notes..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
 
@@ -259,42 +259,42 @@ export default function Activities() {
 
       {activities.length === 0 ? (
         <Card>
-          <p className="text-center text-gray-500 py-8">
+          <p className="text-center text-gray-500 dark:text-gray-400 py-8">
             No activities logged yet. Click "Log Activity" to get started.
           </p>
         </Card>
       ) : (
         <Card>
           <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
+            <table className="w-full min-w-[640px]">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Activity</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Crop</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cost</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Date</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Activity</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Crop</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Quantity</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Cost</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 {activities.map((activity) => (
                   <tr key={activity._id}>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
                       {formatDate(activity.date)}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">{activity.activityType}</td>
-                    <td className="px-6 py-4 text-sm text-gray-900">{activity.crop}</td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">{activity.activityType}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">{activity.crop}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
                       {activity.quantity || '-'} {activity.unit || ''}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
                       KES {activity.cost?.toLocaleString() || 0}
                     </td>
                     <td className="px-6 py-4 text-sm">
                       <button
                         onClick={() => handleDelete(activity._id)}
-                        className="text-red-600 hover:text-red-800"
+                        className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
                       >
                         Delete
                       </button>

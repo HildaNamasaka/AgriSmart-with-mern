@@ -10,6 +10,8 @@ import Expenses from './pages/Expenses';
 import Income from './pages/Income';
 import MarketPrices from './pages/MarketPrices';
 import Marketplace from './pages/Marketplace';
+import Weather from './pages/Weather';
+import { ThemeProvider } from './context/ThemeContext';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -20,7 +22,8 @@ function PrivateRoute({ children }) {
 
 function App() {
   return (
-    <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -69,9 +72,16 @@ function App() {
               <Layout><Marketplace /></Layout>
             </PrivateRoute>
           } />
+          <Route path="/weather" element={
+            <PrivateRoute>
+              <Layout><Weather /></Layout>
+            </PrivateRoute>
+          } />
+
         </Routes>
       </Router>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 
