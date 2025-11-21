@@ -22,27 +22,35 @@ connectDB();
 // Initialize express app
 const app = express();
 
-// CORS Configuration for Production
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  process.env.CLIENT_URL // This will be your Vercel URL
-].filter(Boolean); // Remove undefined values
-
+// CORS Configuration - Allow Vercel domains
 app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+    // Allow localhost for development
+    if (origin.includes('localhost')) {
+      return callback(null, true);
     }
-    return callback(null, true);
+    
+    // Allow all Vercel preview and production URLs
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Allow your production domain if you set CLIENT_URL
+    if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) {
+      return callback(null, true);
+    }
+    
+    // Reject all other origins
+    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+    return callback(new Error(msg), false);
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
 
 app.use(express.json());
