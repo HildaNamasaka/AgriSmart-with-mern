@@ -102,20 +102,31 @@ export default function Register() {
                 placeholder="john@example.com"
               />
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div>
+                <label htmlFor="county" className="block text-sm font-medium text-gray-700 mb-2">
                   County <span className="text-red-500">*</span>
                 </label>
                 <select
+                  id="county"
                   name="county"
                   value={formData.county}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-gray-900 appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 0.5rem center',
+                    backgroundSize: '1.5em 1.5em',
+                    paddingRight: '2.5rem',
+                    color: '#111827'
+                  }}
                 >
-                  <option value="">Select County</option>
+                  <option value="" style={{ color: '#6b7280' }}>Select County</option>
                   {KENYAN_COUNTIES.map((county) => (
-                    <option key={county} value={county}>{county}</option>
+                    <option key={county} value={county} style={{ color: '#111827' }}>
+                      {county}
+                    </option>
                   ))}
                 </select>
               </div>
